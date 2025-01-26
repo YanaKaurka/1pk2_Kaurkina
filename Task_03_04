@@ -1,0 +1,33 @@
+namespace Task_03_04
+{
+    using System;
+
+    public class TextCounter
+    {
+        public static void Main(string[] args)
+        {
+            /*Пользователь вводить в консоли произвольный текст. После каждого ввода консоль очищается. Когда
+пользователь вводить слово «exit» или пустую строку – ввод останавливается и выводиться количество строк
+введенных пользователем.*/
+
+            int count = 0;
+            string text;
+
+            while (true)
+            {
+                Console.Clear();
+                Console.Write("Введите нужный текст (enter /exit): ");
+                text = Console.ReadLine();
+
+                if (text == null || text == "exit")
+                {
+                    break;
+                }
+
+             count++;
+            }
+
+            Console.WriteLine($"Колличество введённых строк: {count}");
+        }
+    }
+}
