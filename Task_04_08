@@ -1,0 +1,50 @@
+namespace Task_04_08
+{
+    /*Дан массив, содержащий последовательность 50 случайных чисел. Найти количество пар элементов, значения
+которых равны.*/
+    using System;
+    using System.Collections.Generic;
+
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            int[] numbers = new int[50];
+            Random random = new Random();
+
+            for (int i = 0; i < 50; i++)
+            {
+                numbers[i] = random.Next();
+            }
+
+            // Выводим массив (для проверки)
+            Console.WriteLine("Сгенерированный массив:");
+            Console.WriteLine(string.Join(" ", numbers));
+            Console.WriteLine();
+
+
+            int pairCount = 0;
+            Dictionary<int, int> counts = new Dictionary<int, int>();
+
+            foreach (int num in numbers)
+            {
+                if (counts.ContainsKey(num))
+                {
+                    counts[num]++;
+                }
+                else
+                {
+                    counts[num] = 1;
+                }
+            }
+
+            foreach (int count in counts.Values)
+            {
+                pairCount += count * (count - 1) / 2;
+            }
+
+
+            Console.WriteLine($"Количество пар элементов с равными значениями: {pairCount}");
+        }
+    }
+}
