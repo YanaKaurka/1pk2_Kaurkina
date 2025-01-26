@@ -1,0 +1,82 @@
+namespace Task_04_07
+{
+    /*В массиве на 30 элементов содержатся данные по росту учеников в классе. Рост мальчиков условно задан
+отрицательными значениями. Вычислить и вывести количество мальчиков и девочек в классе и средний рост для
+мальчиков и девочек. При выводе избавиться от отрицательных значений.*/
+    using System;
+    using System.Linq;
+
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            double[] heights = new double[30];
+            Random random = new Random();
+
+            
+            for (int i = 0; i < 30; i++)
+            {
+        
+                double height = random.Next(150, 191);
+                if (random.Next(0, 2) == 0) 
+                {
+                    height = -height;
+                }
+
+                heights[i] = height;
+            }
+
+
+            
+            Console.WriteLine("Рост учеников (см):");
+            Console.WriteLine(string.Join(" ", heights));
+            Console.WriteLine();
+
+
+            int boysCount = 0;
+            int girlsCount = 0;
+            double totalBoysHeight = 0;
+            double totalGirlsHeight = 0;
+
+            foreach (double height in heights)
+            {
+                if (height < 0) 
+                {
+                    boysCount++;
+                    totalBoysHeight += Math.Abs(height); 
+                }
+                else 
+                {
+                    girlsCount++;
+                    totalGirlsHeight += height;
+                }
+            }
+
+            Console.WriteLine($"Количество мальчиков: {boysCount}");
+            Console.WriteLine($"Количество девочек: {girlsCount}");
+
+            if (boysCount > 0)
+            {
+                double averageBoysHeight = totalBoysHeight / boysCount;
+                Console.WriteLine($"Средний рост мальчиков: {averageBoysHeight:F2} см"); 
+            }
+            else
+            {
+                Console.WriteLine("В классе нет мальчиков.");
+            }
+
+
+            if (girlsCount > 0)
+            {
+                double averageGirlsHeight = totalGirlsHeight / girlsCount;
+                Console.WriteLine($"Средний рост девочек: {averageGirlsHeight:F2} см"); 
+            }
+            else
+            {
+                Console.WriteLine("В классе нет девочек.");
+            }
+
+
+        }
+    }
+}
