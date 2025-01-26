@@ -1,0 +1,32 @@
+namespace Task_03_05
+{
+    using System;
+
+    class Program
+    {
+        static void Main()
+        { /* Написать программу, которая выводит на экран таблицу соответствия температуры в градусах Цельсия и
+Фаренгейта (F = C*1,8 + 32). Диапазон изменения температуры в градусах Цельсия и шаг должны вводиться во
+время работы программы*/
+
+
+            Console.WriteLine("Введите начальную температуру в градусах Цельсия");
+            double ts = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("Введите конечную температурув в градусах Цельсия");
+            double tf = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("Введите шаг изменения температуры в градусах Цельсия");
+            double diff = Convert.ToDouble(Console.ReadLine());
+
+
+            Console.WriteLine("Цельсия | Фаренгейт");
+            Console.WriteLine("-------------------");
+
+
+            for (double cel = ts; cel <= tf; cel += diff)
+            {
+                double far = cel * 1.8 + 32;
+                Console.WriteLine($"Цельсия: {cel}\t Фаренгейта: {far}");
+            }
+        }
+    }
+}
