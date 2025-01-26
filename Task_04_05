@@ -1,0 +1,82 @@
+namespace Task_04_05
+{
+    /*В массиве хранятся сведения о количестве осадков за месяц (30 дней). Необходимо определить общее
+количество осадков, выпавших за каждую декаду месяца, вывести день с самыми сильными осадками за месяц и
+отдельно вывести дни без осадков. Массив с осадками заполнятся с помощью рандома в диапазоне от 0 – нет
+осадков, до 300 мм выпавших осадков. */
+    using System;
+
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            int[] rainfall = new int[30];
+            Random random = new Random();
+
+
+            for (int i = 0; i < 30; i++)
+            {
+                rainfall[i] = random.Next(0, 301);
+            }
+
+
+            Console.WriteLine("Количество осадков по дням:");
+            for (int i = 0; i < 30; i++)
+            {
+                Console.Write($"{rainfall[i]} ");
+                if ((i + 1) % 10 == 0)
+                {
+                    Console.WriteLine();
+                }
+            }
+            Console.WriteLine();
+
+
+
+            Console.WriteLine("Общее количество осадков за декаду:");
+            for (int i = 0; i < 3; i++)
+            {
+                int decadeSum = 0;
+                for (int j = i * 10; j < (i + 1) * 10; j++)
+                {
+                    decadeSum += rainfall[j];
+                }
+                Console.WriteLine($"Декада {i + 1}: {decadeSum}");
+            }
+
+
+            int maxRainfall = rainfall[0];
+            int maxRainfallDay = 1;
+            for (int i = 1; i < 30; i++)
+            {
+                if (rainfall[i] > maxRainfall)
+                {
+                    maxRainfall = rainfall[i];
+                    maxRainfallDay = i + 1;
+                }
+            }
+            Console.WriteLine($"День с самыми сильными осадками: День {maxRainfallDay} (осадков: {maxRainfall} мм)");
+
+
+
+            Console.Write("Дни без осадков: ");
+            bool hasNoRainDays = false;
+            for (int i = 0; i < 30; i++)
+            {
+                if (rainfall[i] == 0)
+                {
+                    Console.Write($"{i + 1} ");
+                    hasNoRainDays = true;
+                }
+            }
+            if (!hasNoRainDays)
+            {
+                Console.WriteLine("Нет");
+            }
+            else
+            {
+                Console.WriteLine();
+            }
+        }
+    }
+}
