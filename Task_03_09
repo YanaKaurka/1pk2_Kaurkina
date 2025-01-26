@@ -1,0 +1,36 @@
+namespace Task_03_09
+{
+    using System;
+    /*Вклад в банке составляет x рублей. Ежегодно он увеличивается на p процентов, после чего дробная часть копеек
+отбрасывается. Каждый год сумма вклада становится больше. Определите, через сколько лет вклад составит не
+менее y рублей.
+Примеры
+входные данные
+100
+10
+200
+выходные данные
+8 */
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            Console.WriteLine("Введите сумму вклада:");
+            double x = double.Parse(Console.ReadLine());
+            Console.WriteLine("Введите процент по вкладу:");
+            double procent = double.Parse(Console.ReadLine());
+            Console.WriteLine("Введите ожидаемую сумму:");
+            double y = double.Parse(Console.ReadLine());
+
+            int years = 0;
+            while (x < y)
+            {
+                x = x * (1 + procent / 100);
+                x = Math.Floor(x); 
+                years++;
+            }
+
+            Console.WriteLine($"Вы получите {y} через {years} лет");
+        }
+    }
+}
