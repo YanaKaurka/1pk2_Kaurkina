@@ -1,0 +1,47 @@
+﻿<Window x:Class="StudentDataApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StudentDataApp"
+        mc:Ignorable="d"
+        Title="Student Data App" Height="450" Width="600" Closing="Window_Closing">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0" Margin="0,0,10,0">
+            <Label Content="Фамилия:"/>
+            <TextBox x:Name="txtLastName" Margin="0,0,0,10"/>
+
+            <Label Content="Имя:"/>
+            <TextBox x:Name="txtFirstName" Margin="0,0,0,10"/>
+
+            <Label Content="Отчество:"/>
+            <TextBox x:Name="txtMiddleName" Margin="0,0,0,10"/>
+
+            <Label Content="Группа:"/>
+            <TextBox x:Name="txtGroup" Margin="0,0,0,10"/>
+
+            <Label Content="Пол:"/>
+            <ComboBox x:Name="cmbGender" Margin="0,0,0,10">
+                <ComboBoxItem Content="Мужской" Tag="{x:Static local:Gender.Male}"/>
+                <ComboBoxItem Content="Женский" Tag="{x:Static local:Gender.Female}"/>
+                <ComboBoxItem Content="Другой" Tag="{x:Static local:Gender.Other}"/>
+            </ComboBox>
+
+            <Label Content="Дата рождения:"/>
+            <DatePicker x:Name="dpBirthDate" Margin="0,0,0,20"/>
+
+            <Button x:Name="btnSave" Content="Сохранить" Click="btnSave_Click" Height="30"/>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1">
+            <Label Content="Список студентов:"/>
+            <ListBox x:Name="lstStudents" Height="300"/>
+            <Button x:Name="btnClear" Content="Очистить список" Click="btnClear_Click" Margin="0,10,0,0" Height="30"/>
+        </StackPanel>
+    </Grid>
+</Window>
